@@ -49,29 +49,3 @@ public class ValidacaoHandler {
 	}
 	
 }
-
-
-/*
-@RestControllerAdvice
-public class ValidacaoHandler extends ResponseEntityExceptionHandler {
-
-    @Override
-    protected ResponseEntity<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
-        List<Error> errors = getErrors(ex);
-        ErrorResponse errorResponse = getErrorResponse(ex, status, errors);
-        return new ResponseEntity<>(errorResponse, status);
-    }
-
-    private ErrorResponse getErrorResponse(MethodArgumentNotValidException ex, HttpStatus status, List<Error> errors) {
-        return new ErrorResponse("Requisição possui campos inválidos", status.value(),
-                status.getReasonPhrase(), ex.getBindingResult().getObjectName(), errors);
-    }
-
-    private List<Error> getErrors(MethodArgumentNotValidException ex) {
-        return ex.getBindingResult().getFieldErrors().stream()
-                .map(error -> new Error(error.getDefaultMessage(), error.getField(), error.getRejectedValue()))
-                .collect(Collectors.toList());
-    }
-    
-}
-*/
