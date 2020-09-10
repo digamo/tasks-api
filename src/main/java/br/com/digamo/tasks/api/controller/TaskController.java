@@ -36,7 +36,7 @@ public class TaskController {
 	
 	@PostMapping
 	public ResponseEntity<Task> save(@RequestBody @Valid Task todo) throws ValidationException {
-		if(todo.getTask() == null || todo.getTask() == "") {
+		if(todo.getName() == null || todo.getName() == "") {
 			throw new ValidationException("Fill the task description");
 		}
 		if(todo.getDueDate() == null) {

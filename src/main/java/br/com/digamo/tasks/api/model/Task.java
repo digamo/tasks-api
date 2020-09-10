@@ -24,8 +24,8 @@ public class Task {
 	private Long id;
 	
 	@Column(nullable = false)
-	@NotEmpty(message = "{required.task.field}")
-	private String task;
+	@NotEmpty(message = "{required.name.field}")
+	private String name;
 	
 	@Column(nullable = false)
 	@NotNull(message = "{required.due.date.field}")
