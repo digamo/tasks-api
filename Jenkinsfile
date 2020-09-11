@@ -16,7 +16,7 @@ pipeline {
 				scannerHome = tool 'SONAR_SCANNER'
 			}
             steps {
-				withSonarQubeEnv('SONAR_LOCAR'){
+				withSonarQubeEnv('SONAR_LOCAL'){
 					bat "${scannerHome}/bin/sonar-scanner -e -Dsonar.projectKey=DeployTasksApi -Dsonar.host.url=http://localhost:9000 -Dsonar.login=0efbef98ab4afa1f21d66454d14fed37d3010c14 -Dsonar.java.binaries=target -Dsonar.coverage.exclusions=**/RootController.java,**/TasksApiApplication.java,**/ValidacaoHandler.java,**/WebConfiguration.java,**/model/Task.java"				
 				}
             }
