@@ -21,6 +21,8 @@ pipeline {
                 }
             }
         }
+		/*
+		 * Desabled because is not working with the jenkins version 2.204.4
         stage ('Quality Gate') {
             steps {
                 sleep(5)
@@ -29,6 +31,12 @@ pipeline {
                 }
             }
         }
+		*/
+        stage ('Deploy Api') {
+            steps {
+                deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-api', war: 'target/tasks-api.war'
+            }
+        }		
     }
 }
 
