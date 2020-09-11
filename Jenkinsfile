@@ -34,7 +34,7 @@ pipeline {
 		*/
         stage ('Deploy Api') {
             steps {
-                deploy adapters: [tomcat8(credentialsId: 'TomcatLogin', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-api', war: 'target/tasks-api.war'
+				deploy adapters: [tomcat8(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-api', war: 'target/tasks-api.war'
             }
         }		
     }
