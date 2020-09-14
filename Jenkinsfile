@@ -34,6 +34,15 @@ pipeline {
 				}
             }
         }		
+        stage ('Deploy Web') {
+            steps {
+				dir('tasks-web'){			
+					git credentialsId: 'github_login', url: 'https://github.com/digamo/tasks-web'
+					bat 'mvn clean package'
+					deploy adapters: [tomcat8(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks', war: 'target/tasks.war'
+				}
+            }
+        }		
 		
 		
 		
