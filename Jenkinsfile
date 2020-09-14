@@ -21,22 +21,21 @@ pipeline {
                 }
             }
         }
-		/*
-		 * Desabled because is not working with the jenkins version 2.204.4
-        stage ('Quality Gate') {
-            steps {
-                sleep(5)
-                timeout(time: 1, unit: 'MINUTES') {
-                    waitForQualityGate abortPipeline: true
-                }
-            }
-        }
-		*/
         stage ('Deploy Api') {
             steps {
 				deploy adapters: [tomcat8(credentialsId: 'tomcat_login', path: '', url: 'http://localhost:8001/')], contextPath: 'tasks-api', war: 'target/tasks-api.war'
             }
         }		
+        stage ('Build Tasks Api Tests') {
+            steps {
+				git credentialsId: 'github_login', url: 'https://github.com/digamo/tasks-api-test'
+                bat 'mvn test'				
+            }
+        }		
+		
+		
+		
+		
     }
 }
 
