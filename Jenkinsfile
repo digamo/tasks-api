@@ -28,8 +28,10 @@ pipeline {
         }		
         stage ('Build Tasks Api Tests') {
             steps {
-				git credentialsId: 'github_login', url: 'https://github.com/digamo/tasks-api-test'
-                bat 'mvn test'				
+				dir('tasks-api-test'){
+					git credentialsId: 'github_login', url: 'https://github.com/digamo/tasks-api-test'
+					bat 'mvn test'				
+				}
             }
         }		
 		
